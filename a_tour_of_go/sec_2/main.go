@@ -1,8 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math"
+	"os"
+	"runtime"
+	"strconv"
 )
 
 /*
@@ -108,6 +112,32 @@ func Sqrt_V2(x float64) float64 {
 	return z
 }
 
+/*
+
+9> Switch
+A switch statement is a shorter way to write a sequence of if - else statements.
+It runs the first case whose value is equal to the condition expression.
+
+Go's switch is like the one in C, C++, Java, JavaScript, and PHP,
+except that Go only runs the selected case, not all the cases that follow.
+In effect, the break statement that is needed at the end of each case in
+those languages is provided automatically in Go. Another important
+difference is that Go's switch cases need not be constants,
+and the values involved need not be integers.
+
+*/
+
+/*
+12> Defer
+A defer statement defers the execution of a function until the surrounding function returns.
+The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+
+Better definition url: [
+	https://victoriametrics.com/blog/defer-in-go,
+	https://go.dev/blog/defer-panic-and-recover
+]
+*/
+
 func main() {
 	// 1>
 	sum := 0
@@ -154,4 +184,43 @@ func main() {
 	fmt.Println("Result:", Sqrt(2))
 	fmt.Println("math.Sqrt:", math.Sqrt(2))
 	fmt.Println("Result Sqrt_V2:", Sqrt_V2(2))
+
+	// 9>
+	fmt.Print("Go runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("macOS.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+
+	// Taking user input
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("Enter you age: ")
+	scanner.Scan()
+	userAge := scanner.Text()
+
+	if err := scanner.Err(); err != nil {
+		fmt.Println("Failed to read input", err)
+	} else {
+		num, parseErr := strconv.Atoi(userAge)
+		if parseErr != nil {
+			fmt.Println("Failed to convert to integer")
+		} else {
+			if num >= 18 {
+				fmt.Println("You are eligible for voting")
+			} else {
+				fmt.Println("You are not eligible for voting")
+			}
+		}
+	}
+
+	// 12>
+	// defer fmt.Println("world")
+	// fmt.Println("hello")
+
 }
