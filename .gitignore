@@ -1,0 +1,18 @@
+# Directories
+.*/
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go module cache
+vendor/
+
+# Binary output
+bin/
+dist/
