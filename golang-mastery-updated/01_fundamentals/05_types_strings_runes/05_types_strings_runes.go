@@ -1,7 +1,7 @@
-// FILE: 01_fundamentals/05_types_strings_runes.go
+// FILE: 01_fundamentals/05_types_strings_runes/05_types_strings_runes.go
 // TOPIC: Strings & Runes — UTF-8 internals, byte vs rune iteration, string immutability
 //
-// Run: go run 01_fundamentals/05_types_strings_runes.go
+// Run: go run 01_fundamentals/05_types_strings_runes/05_types_strings_runes.go
 //
 // ─────────────────────────────────────────────────────────────────────────────
 // WHY THIS MATTERS:
@@ -50,7 +50,7 @@ func main() {
 	//
 	// To modify: convert to []byte, modify, convert back to string.
 
-	s := "Hello, 世界"  // contains ASCII and Chinese characters
+	s := "Hello, 世界" // contains ASCII and Chinese characters
 	fmt.Printf("\n── String internals ──\n")
 	fmt.Printf("  string: %q\n", s)
 	fmt.Printf("  len(s) = %d bytes  (NOT characters!)\n", len(s))
@@ -79,7 +79,7 @@ AND active = true`
 	fmt.Printf("\n── Raw string literal (backtick) ──\n%s\n", raw)
 
 	// Regex example — raw strings are perfect here (no double-escaping \)
-	regexPattern := `\d{4}-\d{2}-\d{2}`  // matches date like 2024-01-15
+	regexPattern := `\d{4}-\d{2}-\d{2}` // matches date like 2024-01-15
 	fmt.Printf("  Regex pattern: %s\n", regexPattern)
 
 	// ─────────────────────────────────────────────────────────────────────
@@ -136,7 +136,7 @@ AND active = true`
 
 	// string → []byte (get mutable bytes)
 	bytes := []byte(original)
-	bytes[0] = 'h'  // modify first byte (safe because it's ASCII)
+	bytes[0] = 'h' // modify first byte (safe because it's ASCII)
 	modified := string(bytes)
 	fmt.Printf("\n── string ↔ []byte ──\n")
 	fmt.Printf("  original:  %q\n", original)
