@@ -36,7 +36,8 @@ other chapter is measured.
 | `CHAPTER_TEMPLATE.md` (the 23-section authoring contract) | ■ done |
 | `BUILD_MANIFEST.md` (chapter status & source-asset map) | ■ done |
 | Chapter 1 — Why Go Exists | ★ canonical |
-| Chapters 2–102 | ▢ planned |
+| Chapters 2–7 (rest of Part I) | ■ done |
+| Chapters 8–102 | ▢ planned |
 | Capstone projects A–J | ▢ planned |
 
 For per-chapter status, see [`BUILD_MANIFEST.md`](BUILD_MANIFEST.md).

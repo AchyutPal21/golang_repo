@@ -79,12 +79,14 @@ Status legend:
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
 | 1 | Why Go Exists | ★ canonical | (new) | The reference exemplar. Other chapters must match this depth. |
-| 2 | A Map of the Go Ecosystem | ▢ | `07_packages_modules/04_go_modules` | Toolchain tour + ecosystem |
-| 3 | Installing Go and Setting Up | ▢ | (new) | OS-by-OS install matrix |
-| 4 | The Go Workspace and Project Structure | ▢ | `07_packages_modules/01_package_system` | go.work, layouts |
-| 5 | How `go run`/`build`/`install` Work | ▢ | `01_fundamentals/01_how_go_runs` | Build cache, cross-compile |
-| 6 | Coming From Another Language | ▢ | (new) | Java/Py/JS/C++/Rust transfer matrix |
-| 7 | Your First Real Program (CLI) | ▢ | (new) | A `wc`-clone, end-to-end |
+| 2 | A Map of the Go Ecosystem | ■ done | (new) | Toolchain tour + stdlib inventory; 3 examples; vet/build/run green |
+| 3 | Installing Go and Setting Up | ■ done | (new) | OS matrix, install self-check, editor smoke-test |
+| 4 | The Go Workspace and Project Structure | ■ done | (new) | go.work, layouts; module anatomy + workspace demo with two nested modules |
+| 5 | How `go run`/`build`/`install` Work | ■ done | `01_fundamentals/01_how_go_runs` | Build cache, cross-compile, -ldflags, build inspector |
+| 6 | Coming From Another Language | ■ done | (new) | Java/Py/JS/C++/Rust transfer tables; Python→Go and JS→Go side-by-sides |
+| 7 | Your First Real Program (CLI) | ■ done | (new) | `wc` clone in 3 versions: minimal → flags → cmd/+internal/ with tests |
+
+**Part I summary:** 7 chapters, 22 markdown files, 28 Go source files, ~50,000 words of prose, ~1,800 lines of runnable Go. All quality gates 1–4 pass (vet, build, run, test). Quality gates 5–10 (review pass, callouts, cross-refs, reading-time, read-out-loud) tracked separately.
 
 ### Part II — Core Language
 
