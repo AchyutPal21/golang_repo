@@ -88,28 +88,30 @@ Status legend:
 
 **Part I summary:** 7 chapters, 22 markdown files, 28 Go source files, ~50,000 words of prose, ~1,800 lines of runnable Go. All quality gates 1–4 pass (vet, build, run, test). Quality gates 5–10 (review pass, callouts, cross-refs, reading-time, read-out-loud) tracked separately.
 
+**Part II summary:** 18 chapters (Ch 8–25), 63 runnable `main.go` examples, 18 README.md files with full 23-section structure, 18 exercises.md + checkpoint.md files. `go vet ./part2_core_language/...` and `go build ./part2_core_language/...` both clean. Covers: types, operators, control flow, functions, closures, defer/panic/recover, pointers, arrays, slices, maps, structs, methods, interfaces, embedding, generics, reflection.
+
 ### Part II — Core Language
 
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
-| 8 | Variables, Constants, Zero Value | ▢ | `01_fundamentals/02,06` | iota deeply |
-| 9 | Numbers, Strings, Booleans | ▢ | `01_fundamentals/03,04,05` | UTF-8 internals |
-| 10 | Conversion / Assertion / Switch | ▢ | `03_structs_methods_interfaces/08` | Three operations conflated |
-| 11 | Operators | ▢ | `01_fundamentals/07` | `&^`, bitwise patterns |
-| 12 | Control Flow | ▢ | `01_fundamentals/08` | for, switch, goto |
-| 13 | Functions | ▢ | `02_functions/01,06,09` | First-class fns |
-| 14 | Closures | ▢ | `02_functions/02` | Loop var, 1.22 fix |
-| 15 | defer/panic/recover | ▢ | `02_functions/03,04` + `01_fundamentals/10` | Cost & contract |
-| 16 | Pointers | ▢ | `01_fundamentals/09` | Escape preview |
-| 17 | Arrays | ▢ | `05_collections/01` | When arrays beat slices |
-| 18 | Slices | ▢ | `05_collections/02,03,04` | The big one |
-| 19 | Maps | ▢ | `05_collections/05,06` | Internals |
-| 20 | Structs | ▢ | `03_structs_methods_interfaces/01,02,07` | Tags, embedding, layout |
-| 21 | Methods | ▢ | `03_structs_methods_interfaces/03` | Receiver rules |
-| 22 | Interfaces | ▢ | `03_structs_methods_interfaces/04,05,06,09` | itab internals |
-| 23 | Embedding & Composition | ▢ | `03_structs_methods_interfaces/02` | Diamonds resolved |
-| 24 | Generics | ▢ | `09_generics/01–07` (full chapter) | Constraints, type sets |
-| 25 | Reflection | ▢ | `10_advanced_patterns/04` | Cost, when not to use |
+| 8 | Variables, Constants, Zero Value | ■ done | `01_fundamentals/02,06` | iota, zero values, 3 examples, vet/build/run green |
+| 9 | Numbers, Strings, Booleans | ■ done | `01_fundamentals/03,04,05` | UTF-8, IEEE-754 traps, 3 examples |
+| 10 | Conversion / Assertion / Switch | ■ done | `03_structs_methods_interfaces/08` | typed-nil gotcha, mini AST evaluator |
+| 11 | Operators | ■ done | `01_fundamentals/07` | `&^`, bitwise patterns, FlagSet exercise |
+| 12 | Control Flow | ■ done | `01_fundamentals/08` | for, switch, labels/goto; vet clean |
+| 13 | Functions | ■ done | `02_functions/01,06,09` | multi-return, variadic, init, HOF, memoize |
+| 14 | Closures | ■ done | `02_functions/02` | capture model, loop-var trap, 1.22 fix, patterns |
+| 15 | defer/panic/recover | ■ done | `02_functions/03,04` + `01_fundamentals/10` | LIFO, arg eval, tx rollback, cost |
+| 16 | Pointers | ■ done | `01_fundamentals/09` | escape analysis, *T optional, alignment |
+| 17 | Arrays | ■ done | `05_collections/01` | value semantics, slice backing, matrix exercise |
+| 18 | Slices | ■ done | `05_collections/02,03,04` | header internals, aliasing traps, 3-index, generic Stack |
+| 19 | Maps | ■ done | `05_collections/05,06` | nil trap, iteration randomisation, Set, sync.Map |
+| 20 | Structs | ■ done | `03_structs_methods_interfaces/01,02,07` | tags, JSON, embedding, layout, BankAccount |
+| 21 | Methods | ■ done | `03_structs_methods_interfaces/03` | value/ptr receivers, method sets, nil receiver |
+| 22 | Interfaces | ■ done | `03_structs_methods_interfaces/04,05,06,09` | itab, typed-nil, io pipeline, testing |
+| 23 | Embedding & Composition | ■ done | `03_structs_methods_interfaces/02` | mixin, diamond resolution, middleware |
+| 24 | Generics | ■ done | `09_generics/01–07` (full chapter) | Map/Filter/Reduce, ~T, OrderedSet |
+| 25 | Reflection | ■ done | `10_advanced_patterns/04` | TypeOf/ValueOf, fillDefaults, DeepEqual, cost |
 
 ### Part III — Designing Software in Go
 
