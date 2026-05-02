@@ -137,22 +137,24 @@ Status legend:
 
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
-| 41 | Concurrency Mental Model | ▢ | (new) | CSP background |
-| 42 | Goroutines: Internals | ▢ | `06_concurrency/01` | G/M/P, preemption |
-| 43 | Channels: Internals | ▢ | `06_concurrency/02,03` | hchan, closing rules |
-| 44 | select / Timeouts / Cancel | ▢ | `06_concurrency/04` | |
-| 45 | sync Primitives | ▢ | `06_concurrency/05,07` | Mutex/Cond/Once/Pool |
-| 46 | sync/atomic | ▢ | `06_concurrency/06` + `08_standard_library/10` | Memory model |
-| 47 | context Package | ▢ | `06_concurrency/10` | |
-| 48 | Worker Pools | ▢ | `06_concurrency/08` | errgroup, semaphores |
-| 49 | Pipelines, Fan-In/Out | ▢ | `06_concurrency/09` | |
-| 50 | Pub/Sub, Rate Limit, Throttle | ▢ | (new) | x/time/rate |
-| 51 | Race Detector | ▢ | (new) | Reading -race output |
-| 52 | Deadlocks, Leaks | ▢ | (new) | pprof goroutine profile |
-| 53 | Networking I — TCP/UDP | ▢ | (new) | Toy chat + DNS |
-| 54 | Networking II — HTTP/1.1 | ▢ | `08_standard_library/09` | Transport, RoundTripper |
-| 55 | Networking III — TLS / H2 / H3 | ▢ | (new) | ALPN, ACME |
-| 56 | Production HTTP Server | ▢ | (new) | Graceful shutdown, timeouts |
+| 41 | Concurrency Mental Model | ■ done | (new) | CSP, G/M/P, actor vs shared-memory, pipeline |
+| 42 | Goroutines: Internals | ■ done | `06_concurrency/01` | G/M/P scheduler, stack growth, work stealing, leak detection |
+| 43 | Channels: Internals | ■ done | `06_concurrency/02,03` | hchan, done channel, semaphore, ownership transfer, RingBuffer[T] |
+| 44 | select / Timeouts / Cancel | ■ done | `06_concurrency/04` | priority select, nil disable, time.NewTimer safe pattern, retry |
+| 45 | sync Primitives | ■ done | `06_concurrency/05,07` | Mutex/RWMutex, Cond, Once, Pool, Cache with TTL |
+| 46 | sync/atomic | ■ done | `06_concurrency/06` + `08_standard_library/10` | typed API, CAS, atomic.Value hot-reload, metrics registry |
+| 47 | context Package | ■ done | `06_concurrency/10` | WithCancel/Timeout/Deadline, propagation, WithValue, pipeline |
+| 48 | Worker Pools | ■ done | `06_concurrency/08` | errgroup, scatter-gather, semaphore, RunBatch orchestrator |
+| 49 | Pipelines, Fan-In/Out | ■ done | `06_concurrency/09` | stage signature, back-pressure, merge, ordered fan-out, CSV pipeline |
+| 50 | Pub/Sub, Rate Limit, Throttle | ■ done | (new) | broker, token bucket, sliding window, throttle, leaky bucket, event bus |
+| 51 | Race Detector | ■ done | (new) | -race flag, 5 patterns, fixes: atomic/mutex/channel/Once/capture |
+| 52 | Deadlocks, Leaks | ■ done | (new) | lock ordering, self-deadlock, livelock, goroutine leaks, leak finder |
+| 53 | Networking I — TCP/UDP | ■ done | (new) | echo server, graceful shutdown, semaphore, deadlines, UDP patterns |
+| 54 | Networking II — HTTP/1.1 | ■ done | `08_standard_library/09` | ServeMux, middleware, JSON CRUD API, retry client, REST exercise |
+| 55 | Networking III — TLS / H2 / H3 | ■ done | (new) | self-signed cert, HTTPS, mTLS, H2 multiplexing, ALPN |
+| 56 | Production HTTP Server | ■ done | (new) | recovery, slog, rate limit, health/ready, graceful shutdown, metrics |
+
+**Part IV summary:** 16 chapters (Ch 41–56), 48 runnable `main.go` examples (all `go vet` + `go run` clean), 16 README.md + exercises.md + checkpoint.md files. Covers: concurrency mental model, goroutine/channel internals, select patterns, sync primitives, atomic, context, worker pools, pipelines, pub/sub, race detector, deadlocks/leaks, TCP/UDP/HTTP/TLS/H2, production server. All `-race` clean examples in Ch41–52.
 
 ### Part V — Building Backends
 
