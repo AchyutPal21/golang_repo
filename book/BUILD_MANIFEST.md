@@ -117,21 +117,21 @@ Status legend:
 
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
-| 26 | OOP in Go | ▢ | (new) | Mental model shift |
-| 27 | Interface-Driven Design | ▢ | `03_structs_methods_interfaces/09` | Consumer-side |
-| 28 | Dependency Injection | ▢ | `03_structs_methods_interfaces/07` (functional options) | Wire vs manual |
-| 29 | SOLID in Go | ▢ | (new) | Each principle, Go-flavored |
-| 30 | Clean / Hexagonal | ▢ | (new) | Running-thread service starts |
-| 31 | Patterns I — Creational | ▢ | `10_advanced_patterns/01` | |
-| 32 | Patterns II — Structural | ▢ | `10_advanced_patterns/02` | |
-| 33 | Patterns III — Behavioral | ▢ | `10_advanced_patterns/03` | |
-| 34 | Repository Pattern | ▢ | (new) | Domain ≠ persistence |
-| 35 | Service Layer | ▢ | (new) | Thin handlers |
-| 36 | Error Handling Philosophy | ▢ | `04_error_handling/01,03,04,06` | |
-| 37 | Custom Error Types | ▢ | `04_error_handling/02,05,07,08` | errors.Join |
-| 38 | Files / Streams / Buffered I/O | ▢ | `08_standard_library/05,06` | io composition |
-| 39 | Encoding | ▢ | `08_standard_library/04` + (new) | JSON/XML/YAML/CSV |
-| 40 | Configuration | ▢ | (new) | 12-factor, secrets |
+| 26 | OOP in Go | ■ | (new) | Mental model shift |
+| 27 | Interface-Driven Design | ■ | `03_structs_methods_interfaces/09` | Consumer-side |
+| 28 | Dependency Injection | ■ | `03_structs_methods_interfaces/07` (functional options) | Wire vs manual |
+| 29 | SOLID in Go | ■ | (new) | Each principle, Go-flavored |
+| 30 | Clean / Hexagonal | ■ | (new) | Running-thread service starts |
+| 31 | Patterns I — Creational | ■ | `10_advanced_patterns/01` | |
+| 32 | Patterns II — Structural | ■ | `10_advanced_patterns/02` | |
+| 33 | Patterns III — Behavioral | ■ | `10_advanced_patterns/03` | |
+| 34 | Repository Pattern | ■ | (new) | Domain ≠ persistence |
+| 35 | Service Layer | ■ | (new) | Thin handlers |
+| 36 | Error Handling Philosophy | ■ | `04_error_handling/01,03,04,06` | |
+| 37 | Custom Error Types | ■ | `04_error_handling/02,05,07,08` | errors.Join |
+| 38 | Files / Streams / Buffered I/O | ■ | `08_standard_library/05,06` | io composition |
+| 39 | Encoding | ■ | `08_standard_library/04` + (new) | JSON/XML/YAML/CSV |
+| 40 | Configuration | ■ | (new) | 12-factor, secrets |
 
 ### Part IV — Concurrency & Systems
 
