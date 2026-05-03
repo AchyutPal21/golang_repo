@@ -543,15 +543,17 @@ func main() {
 	// Add another product in food category.
 	post("/products", `{"name":"Apple","price":0.99,"category":"food","stock":500,"sku":"AP-0001"}`) //nolint:errcheck
 
-	code, body = get("/products")
-	show("List all → 200", code, body)
+	var gbody any
+	var gcode int
+	gcode, gbody = get("/products")
+	show("List all → 200", gcode, gbody)
 
-	code, body = get("/products?category=clothing&min_price=5&max_price=100")
-	show("Filter clothing 5-100 → 200", code, body)
+	gcode, gbody = get("/products?category=clothing&min_price=5&max_price=100")
+	show("Filter clothing 5-100 → 200", gcode, gbody)
 
-	code, body = get("/products?category=weapons")
-	show("Invalid category → 400", code, body)
+	gcode, gbody = get("/products?category=weapons")
+	show("Invalid category → 400", gcode, gbody)
 
-	code, body = get("/products?min_price=abc")
-	show("Invalid min_price → 400", code, body)
+	gcode, gbody = get("/products?min_price=abc")
+	show("Invalid min_price → 400", gcode, gbody)
 }

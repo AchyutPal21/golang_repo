@@ -23,23 +23,13 @@ import (
 // CONNECTION POOL SETTINGS
 // ─────────────────────────────────────────────────────────────────────────────
 
+// configurePool shows recommended settings for a production PostgreSQL/MySQL pool.
+// Not called directly in main() — settings are set inline for SQLite compatibility.
 func configurePool(db *sql.DB) {
-	// Maximum number of connections kept open in the pool.
-	// Each connection is a TCP socket to the database.
-	db.SetMaxOpenConns(25)
-
-	// Maximum number of idle connections retained in the pool.
-	// If a connection is released and idle count < MaxIdleConns, it is kept.
-	// Setting this equal to MaxOpenConns avoids the connection teardown/recreate cost.
-	db.SetMaxIdleConns(25)
-
-	// Maximum time a connection may be reused. After this, the pool closes it.
-	// Prevents stale connections from persisting through network changes.
-	db.SetConnMaxLifetime(5 * time.Minute)
-
-	// Maximum time a connection may sit idle before being closed.
-	// Shorter than ConnMaxLifetime to reclaim idle resources faster.
-	db.SetConnMaxIdleTime(2 * time.Minute)
+	db.SetMaxOpenConns(25)        // max TCP connections to DB
+	db.SetMaxIdleConns(25)        // idle connections kept in pool
+	db.SetConnMaxLifetime(5 * time.Minute) // reuse limit
+	db.SetConnMaxIdleTime(2 * time.Minute) // idle timeout
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -123,7 +113,7 @@ func cancelledQuery(db *sql.DB) {
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel() // pre-cancel before querying
 
-	_, err := db.QueryRowContext(ctx, `SELECT count(*) FROM products`).Scan(new(int))
+	err := db.QueryRowContext(ctx, `SELECT count(*) FROM products`).Scan(new(int))
 	if err != nil {
 		fmt.Printf("  cancelled query error: %v\n", err)
 	}
@@ -134,7 +124,7 @@ func timeoutQuery(db *sql.DB) {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Nanosecond)
 	defer cancel()
 
-	_, err := db.QueryRowContext(ctx, `SELECT count(*) FROM products`).Scan(new(int))
+	err := db.QueryRowContext(ctx, `SELECT count(*) FROM products`).Scan(new(int))
 	if err != nil {
 		fmt.Printf("  timeout query error: %v\n", err)
 	}
@@ -155,10 +145,19 @@ func printStats(db *sql.DB, label string) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 func main() {
-	db, _ := sql.Open("sqlite", ":memory:?_journal_mode=WAL")
+	// file::memory:?cache=shared — all connections share the same in-memory database.
+	// SQLite doesn't support true concurrent writes, so we cap at 1 open connection.
+	// In a real PostgreSQL/MySQL deployment, MaxOpenConns(25) makes sense.
+	db, _ := sql.Open("sqlite", "file::memory:?cache=shared")
 	defer db.Close()
 
-	configurePool(db)
+	// For SQLite: use 1 connection (SQLite serializes writes).
+	// The settings below are shown for educational purposes — use these values
+	// with PostgreSQL/MySQL in production.
+	db.SetMaxOpenConns(1)
+	db.SetMaxIdleConns(1)
+	db.SetConnMaxLifetime(5 * time.Minute)
+	db.SetConnMaxIdleTime(2 * time.Minute)
 
 	// Seed data.
 	db.Exec(`CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, price REAL)`)
@@ -245,6 +244,8 @@ func main() {
 	fmt.Printf("  ✓ transaction: updated %d products (count before=%d after=%d)\n", count, count, newCount)
 
 	// Verify price update.
-	p2, _ := getProductCtx(context.Background(), db, 1)
-	fmt.Printf("  product 1 price after 10%% increase: %.2f\n", p2.Price)
+	p2, err2 := getProductCtx(context.Background(), db, 1)
+	if err2 == nil {
+		fmt.Printf("  product 1 price after 10%% increase: %.2f\n", p2.Price)
+	}
 }

@@ -1,0 +1,9 @@
+ALTER TABLE users ADD COLUMN bio TEXT;
+ALTER TABLE users ADD COLUMN avatar_url TEXT;
+
+CREATE TABLE IF NOT EXISTS user_settings (
+    user_id    INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    theme      TEXT    NOT NULL DEFAULT 'light',
+    timezone   TEXT    NOT NULL DEFAULT 'UTC',
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

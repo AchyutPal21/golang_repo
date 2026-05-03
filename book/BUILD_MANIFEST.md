@@ -176,15 +176,18 @@ Status legend:
 | 70 | Repository in Production | ▢ | (new) | Read replicas |
 | 71 | Caching | ▢ | (new) | Stampede, singleflight |
 | 72 | Redis | ▢ | (new) | go-redis, Redlock |
-| 73 | Message Queues | ▢ | (new) | NATS/RabbitMQ/Kafka tour |
-| 74 | Kafka | ▢ | (new) | Exactly-once truth |
-| 75 | gRPC | ▢ | (new) | Protobuf, interceptors |
-| 76 | GraphQL with gqlgen | ▢ | (new) | Dataloaders |
-| 77 | WebSockets / SSE | ▢ | (new) | Hub pattern |
-| 78 | Background Jobs | ▢ | (new) | asynq, river |
-| 79 | Rate / Breaker / Retry | ▢ | (new) | gobreaker |
-| 80 | Idempotency | ▢ | (new) | API edge |
-| 81 | Event-Driven Architecture | ▢ | (new) | Outbox, saga |
+| 72† | Message Queues | ✅ | chapter72_message_queues | Priority queue, pub/sub, middleware, event sourcing |
+| 73† | Kafka | ✅ | chapter73_kafka | Topics, partitions, consumer groups, compacted topics |
+| 74† | GraphQL | ✅ | chapter74_graphql | N+1, dataloaders, pagination, subscriptions |
+| 75† | WebSockets / SSE | ✅ | chapter75_websockets | Hub pattern, rooms, reconnection, Redis fan-out |
+| 76† | gRPC | ✅ | chapter76_grpc | Status codes, interceptors, streaming, hedged requests |
+| 77† | Background Jobs | ✅ | chapter77_background_jobs | Priority queue, scheduler, distributed lock, DLQ |
+| 78† | Rate / Breaker / Retry | ✅ | chapter78_rate_limiting | Token bucket, circuit breaker, resilience policy |
+| 79† | Idempotency | ✅ | chapter79_idempotency | IdempStore, inbox, outbox, saga, delivery semantics |
+| 80† | Event-Driven Architecture | ✅ | chapter80_event_driven | Outbox relay, event sourcing, CQRS, choreography saga |
+| 81 | (see Ch80†) | — | — | Merged into chapter80_event_driven |
+
+_† directory numbers reflect actual chapter folders; BOOK.md uses a different offset starting at Ch73._
 
 ### Part VI — Production Engineering
 
