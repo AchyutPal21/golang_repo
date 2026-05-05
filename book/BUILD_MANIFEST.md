@@ -117,21 +117,21 @@ Status legend:
 
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
-| 26 | OOP in Go | ■ | (new) | Mental model shift |
-| 27 | Interface-Driven Design | ■ | `03_structs_methods_interfaces/09` | Consumer-side |
-| 28 | Dependency Injection | ■ | `03_structs_methods_interfaces/07` (functional options) | Wire vs manual |
-| 29 | SOLID in Go | ■ | (new) | Each principle, Go-flavored |
-| 30 | Clean / Hexagonal | ■ | (new) | Running-thread service starts |
-| 31 | Patterns I — Creational | ■ | `10_advanced_patterns/01` | |
-| 32 | Patterns II — Structural | ■ | `10_advanced_patterns/02` | |
-| 33 | Patterns III — Behavioral | ■ | `10_advanced_patterns/03` | |
-| 34 | Repository Pattern | ■ | (new) | Domain ≠ persistence |
-| 35 | Service Layer | ■ | (new) | Thin handlers |
-| 36 | Error Handling Philosophy | ■ | `04_error_handling/01,03,04,06` | |
-| 37 | Custom Error Types | ■ | `04_error_handling/02,05,07,08` | errors.Join |
-| 38 | Files / Streams / Buffered I/O | ■ | `08_standard_library/05,06` | io composition |
-| 39 | Encoding | ■ | `08_standard_library/04` + (new) | JSON/XML/YAML/CSV |
-| 40 | Configuration | ■ | (new) | 12-factor, secrets |
+| 26 | OOP in Go | ■ done | chapter26_oop_in_go | Mental model shift from class-based OOP; struct embedding vs inheritance |
+| 27 | Interface-Driven Design | ■ done | chapter27_interface_driven_design | Consumer-side interfaces, implicit satisfaction, io.Reader composition |
+| 28 | Dependency Injection | ■ done | chapter28_dependency_injection | Functional options, Wire vs manual DI, constructor injection |
+| 29 | SOLID in Go | ■ done | chapter29_solid_in_go | All 5 principles Go-flavored; interface segregation, Liskov, DIP |
+| 30 | Clean / Hexagonal | ■ done | chapter30_clean_architecture | Ports & adapters, running-thread service starts here |
+| 31 | Patterns I — Creational | ■ done | chapter31_creational_patterns | Factory, Builder, Singleton, Option; from `10_advanced_patterns/01` |
+| 32 | Patterns II — Structural | ■ done | chapter32_structural_patterns | Adapter, Decorator, Proxy, Facade; from `10_advanced_patterns/02` |
+| 33 | Patterns III — Behavioral | ■ done | chapter33_behavioral_patterns | Strategy, Observer, Command, Iterator; from `10_advanced_patterns/03` |
+| 34 | Repository Pattern | ■ done | chapter34_repository_pattern | Domain ≠ persistence, in-memory + SQL repos, interface contract |
+| 35 | Service Layer | ■ done | chapter35_service_layer | Thin handlers, orchestration layer, transaction boundary |
+| 36 | Error Handling Philosophy | ■ done | chapter36_error_handling_philosophy | Sentinel, opaque, structured errors; from `04_error_handling/01,03,04,06` |
+| 37 | Custom Error Types | ■ done | chapter37_custom_error_types | errors.Join, %w wrapping, As/Is, from `04_error_handling/02,05,07,08` |
+| 38 | Files / Streams / Buffered I/O | ■ done | chapter38_files_streams_io | io.Reader/Writer composition, bufio, from `08_standard_library/05,06` |
+| 39 | Encoding | ■ done | chapter39_encoding | JSON/XML/CSV/gob, streaming decoder, from `08_standard_library/04` |
+| 40 | Configuration | ■ done | chapter40_configuration | 12-factor, env/file/flag layering, secrets, viper pattern |
 
 ### Part IV — Concurrency & Systems
 
@@ -160,60 +160,57 @@ Status legend:
 
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
-| 57 | REST API Design | ▢ | (new) | Versioning, idempotency |
-| 58 | Routing options | ▢ | (new) | net/http 1.22, chi, gin, echo |
-| 59 | Middleware | ▢ | (new) | Composition |
-| 60 | Authentication | ▢ | (new) | Sessions/JWT |
-| 61 | Authorization | ▢ | (new) | RBAC/ABAC/policy |
-| 62 | Validation | ▢ | (new) | go-playground/validator |
-| 63 | Structured Logging | ▢ | (new) | log/slog |
-| 64 | API Error Handling | ▢ | (new) | RFC 7807 |
-| 65 | database/sql | ▢ | (new) | Pool tuning |
-| 66 | PostgreSQL with pgx | ▢ | (new) | LISTEN/NOTIFY |
-| 67 | Transactions / ACID | ▢ | (new) | Retry loops |
-| 68 | Migrations | ▢ | (new) | atlas/goose |
-| 69 | ORM vs Builder vs Raw | ▢ | (new) | sqlc bias |
-| 70 | Repository in Production | ▢ | (new) | Read replicas |
-| 71 | Caching | ▢ | (new) | Stampede, singleflight |
-| 72 | Redis | ▢ | (new) | go-redis, Redlock |
-| 72† | Message Queues | ✅ | chapter72_message_queues | Priority queue, pub/sub, middleware, event sourcing |
-| 73† | Kafka | ✅ | chapter73_kafka | Topics, partitions, consumer groups, compacted topics |
-| 74† | GraphQL | ✅ | chapter74_graphql | N+1, dataloaders, pagination, subscriptions |
-| 75† | WebSockets / SSE | ✅ | chapter75_websockets | Hub pattern, rooms, reconnection, Redis fan-out |
-| 76† | gRPC | ✅ | chapter76_grpc | Status codes, interceptors, streaming, hedged requests |
-| 77† | Background Jobs | ✅ | chapter77_background_jobs | Priority queue, scheduler, distributed lock, DLQ |
-| 78† | Rate / Breaker / Retry | ✅ | chapter78_rate_limiting | Token bucket, circuit breaker, resilience policy |
-| 79† | Idempotency | ✅ | chapter79_idempotency | IdempStore, inbox, outbox, saga, delivery semantics |
-| 80† | Event-Driven Architecture | ✅ | chapter80_event_driven | Outbox relay, event sourcing, CQRS, choreography saga |
-| 81 | (see Ch80†) | — | — | Merged into chapter80_event_driven |
-
-_† directory numbers reflect actual chapter folders; BOOK.md uses a different offset starting at Ch73._
+| 57 | REST API Design | ■ done | chapter57_rest_api_design | Versioning, idempotency keys, API evolution |
+| 58 | Routing options | ■ done | chapter58_routing_options | net/http 1.22 patterns, chi, gin, echo comparison |
+| 59 | Middleware | ■ done | chapter59_middleware | Composition chain, logging, auth, recovery |
+| 60 | Authentication | ■ done | chapter60_authentication | Sessions, JWT, refresh tokens |
+| 61 | Authorization | ■ done | chapter61_authorization | RBAC, ABAC, policy engine |
+| 62 | Validation | ■ done | chapter62_validation | go-playground/validator, custom rules, error messages |
+| 63 | Structured Logging | ■ done | chapter63_structured_logging | log/slog, sampling, PII redaction |
+| 64 | API Error Handling | ■ done | chapter64_api_error_handling | RFC 7807 problem details, error taxonomy |
+| 65 | database/sql | ■ done | chapter65_database_sql | Pool tuning, prepared statements, scanning |
+| 66 | PostgreSQL with pgx | ■ done | chapter66_postgresql_pgx | LISTEN/NOTIFY, COPY, pgx v5 |
+| 67 | Transactions / ACID | ■ done | chapter67_transactions_acid | Retry loops, savepoints, isolation levels |
+| 68 | Migrations | ■ done | chapter68_migrations | atlas/goose, up/down, CI integration |
+| 69 | ORM vs Builder vs Raw | ■ done | chapter69_orm_patterns | sqlc, squirrel, GORM trade-offs |
+| 70 | Caching | ■ done | chapter70_caching | Stampede, singleflight, TTL, layered cache |
+| 71 | Redis | ■ done | chapter71_redis | go-redis, Redlock, pub/sub, sorted sets |
+| 72 | Message Queues | ■ done | chapter72_message_queues | Priority queue, pub/sub, middleware, event sourcing |
+| 73 | Kafka | ■ done | chapter73_kafka | Topics, partitions, consumer groups, compacted topics |
+| 74 | GraphQL | ■ done | chapter74_graphql | N+1, dataloaders, pagination, subscriptions |
+| 75 | WebSockets / SSE | ■ done | chapter75_websockets | Hub pattern, rooms, reconnection, Redis fan-out |
+| 76 | gRPC | ■ done | chapter76_grpc | Status codes, interceptors, streaming, hedged requests |
+| 77 | Background Jobs | ■ done | chapter77_background_jobs | Priority queue, scheduler, distributed lock, DLQ |
+| 78 | Rate / Breaker / Retry | ■ done | chapter78_rate_limiting | Token bucket, circuit breaker, resilience policy |
+| 79 | Idempotency | ■ done | chapter79_idempotency | IdempStore, inbox, outbox, saga, delivery semantics |
+| 80 | Event-Driven Architecture | ■ done | chapter80_event_driven | Outbox relay, event sourcing, CQRS, choreography saga |
+| 81 | (see Ch80) | — | — | Merged into chapter80_event_driven |
 
 ### Part VI — Production Engineering
 
 | # | Chapter | Status | Source asset(s) | Notes |
 | --- | --- | --- | --- | --- |
-| 82 | Testing Fundamentals | ▢ | `07_packages_modules/07` + `10_advanced_patterns/07` | Subtests, table-driven |
-| 83 | Mocking | ▢ | (new) | gomock/mockery |
-| 84 | testcontainers-go | ▢ | (new) | Real Postgres in CI |
-| 85 | E2E Testing | ▢ | (new) | Snapshot, contract |
-| 86 | Benchmarking | ▢ | `10_advanced_patterns/08` | benchstat |
-| 87 | pprof | ▢ | (new) | Flame graphs |
-| 88 | Performance Patterns | ▢ | `10_advanced_patterns/08` | sync.Pool |
-| 89 | GC and Escape | ▢ | (new) | -gcflags=-m |
-| 90 | Production Profiling | ▢ | (new) | Continuous profiling |
-| 91 | Logging Strategy | ▢ | (new) | Sampling, PII |
-| 92 | Prometheus | ▢ | (new) | Histograms, RED/USE |
-| 93 | OpenTelemetry | ▢ | (new) | Spans, baggage |
-| 94 | Dockerizing | ▢ | (new) | Multi-stage, distroless |
-| 95 | Kubernetes | ▢ | (new) | Probes, HPA |
-| 96 | CI/CD | ▢ | (new) | GitHub Actions, goreleaser |
-| 97 | Deploying | ▢ | (new) | Blue/green, canary |
-| 98 | Reliability | ▢ | (new) | SLO/SLI |
-| 99 | Distributed Building Blocks | ▢ | (new) | Raft, leader election |
-| 100 | Microservices vs Monolith | ▢ | (new) | Honest take |
-| 101 | Security | ▢ | (new) | govulncheck, OWASP |
-| 102 | Incidents / Post-Mortems | ▢ | (new) | Goroutine dumps |
+| 82 | Testing Fundamentals | ■ done | chapter82_testing_fundamentals | Subtests, table-driven tests, parallel, golden files |
+| 83 | Mocking | ■ done | chapter83_mocking | Interface mocks, gomock patterns, stub vs fake |
+| 84 | Integration Testing | ■ done | chapter84_integration_testing | testcontainers-go, real Postgres in CI |
+| 85 | Benchmarking | ■ done | chapter85_benchmarking | benchstat, pprof-guided optimisation, allocation benchmarks |
+| 86 | pprof | ■ done | chapter86_pprof | Flame graphs, CPU/heap/goroutine profiles, net/http/pprof |
+| 87 | Performance Patterns | ■ done | chapter87_performance_patterns | sync.Pool, string builder, zero-alloc patterns |
+| 88 | GC and Escape Analysis | ■ done | chapter88_gc_escape | -gcflags=-m, escape heuristics, GC tuning |
+| 89 | Logging Strategy | ■ done | chapter89_logging_strategy | log/slog structured logging, sampling, PII redaction |
+| 90 | Prometheus | ■ done | chapter90_prometheus | Histograms, counters, RED/USE method, alerting rules |
+| 91 | OpenTelemetry | ■ done | chapter91_opentelemetry | Traces, spans, baggage, W3C traceparent, sampling |
+| 92 | Dockerizing | ■ done | chapter92_dockerizing | Multi-stage builds, distroless, health checks, layer cache |
+| 93 | Kubernetes | ■ done | chapter93_kubernetes | Deployments, probes, HPA, PDB, rolling update |
+| 94 | CI/CD | ■ done | chapter94_cicd | GitHub Actions workflows, goreleaser, build matrix |
+| 95 | Reliability | ■ done | chapter95_reliability | SLO/SLI, error budget, burn rate alerts, circuit breaker |
+| 96 | Distributed Building Blocks | ■ done | chapter96_distributed_building_blocks | Leader election, distributed lock, fencing tokens, Raft basics |
+| 97 | Security | ■ done | chapter97_security | OWASP top 10 patterns, JWT HMAC, rate limiting, secret scanning |
+| 98 | Incidents / Post-Mortems | ■ done | chapter98_incidents | Goroutine dumps, panic recovery, postmortem structure |
+| 99 | Production Profiling | ■ done | chapter99_production_profiling | Continuous profiling, heap growth analysis, profile diff/regression |
+| 100 | Deploying | ■ done | chapter100_deploying | Blue/green, canary with metric gates, strategy decision engine |
+| 101 | Microservices vs Monolith | ■ done | chapter101_microservices_vs_monolith | Strangler fig, seam detection, data ownership, migration planner |
+| 102 | (see Ch98–101) | — | — | Covered across incidents, profiling, deploying, microservices chapters |
 
 ### Part VII — Capstone Projects
 
