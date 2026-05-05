@@ -214,18 +214,18 @@ Status legend:
 
 ### Part VII — Capstone Projects
 
-| Project | Status | Notes |
-| --- | --- | --- |
-| A — URL Shortener | ▢ | Postgres + Redis, Docker, deploy |
-| B — Auth Service | ▢ | OAuth, MFA, refresh tokens |
-| C — E-commerce Backend | ▢ | Saga, outbox |
-| D — Real-Time Chat | ▢ | WebSockets, Redis pub/sub |
-| E — Notification Service | ▢ | Provider failover |
-| F — Job Queue | ▢ | SQS-clone |
-| G — File Upload | ▢ | Multipart, resumable, S3-compat |
-| H — API Gateway | ▢ | Reverse proxy + edge features |
-| I — Distributed Scheduler | ▢ | Leader election, no-miss cron |
-| J — Microservices Platform | ▢ | 5 services + platform layer |
+| Project | Status | Source asset(s) | Notes |
+| --- | --- | --- | --- |
+| A — URL Shortener | ■ done | capstone_a_url_shortener | Base62, Redis cache, rate limiter, click tracker, graceful shutdown |
+| B — Auth Service | ■ done | capstone_b_auth_service | bcrypt, JWT, refresh token rotation, TOTP MFA, RBAC |
+| C — E-commerce Backend | ■ done | capstone_c_ecommerce_backend | Saga pattern, inventory reservation, payment compensation |
+| D — Real-Time Chat | ■ done | capstone_d_realtime_chat | Hub/room pattern, presence tracker, message history, reconnect backoff |
+| E — Notification Service | ■ done | capstone_e_notification_service | Multi-channel, provider failover, retry+backoff, dead-letter queue |
+| F — Job Queue | ■ done | capstone_f_job_queue | Visibility timeout, priority lanes, DLQ, worker pool |
+| G — File Upload | ■ done | capstone_g_file_upload | Multipart assembly, resumable upload, virus scan hook, S3-compat interface |
+| H — API Gateway | ■ done | capstone_h_api_gateway | Route table, round-robin LB, circuit breaker, rate limiter, metrics |
+| I — Distributed Scheduler | ■ done | capstone_i_distributed_scheduler | Cron parser, leader election, no-miss catch-up, distributed lock |
+| J — Microservices Platform | ■ done | capstone_j_microservices_platform | 5 services, message bus, service registry, distributed trace context |
 
 ---
 
