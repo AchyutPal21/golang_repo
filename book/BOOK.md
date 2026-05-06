@@ -1,4 +1,4 @@
-# The Complete Golang Engineering Bible
+# Deep Dive into Go: Building Production-Ready Systems
 ## Master Table of Contents — From Level 0 to Level 1000
 
 > A self-taught path from "I have never written code" to "I architect production

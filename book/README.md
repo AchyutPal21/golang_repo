@@ -1,4 +1,4 @@
-# The Complete Golang Engineering Bible
+# Deep Dive into Go: Building Production-Ready Systems
 
 > A self-taught path from "I have never written code" to "I architect
 > production Go systems at scale." Written in book style, organized as a

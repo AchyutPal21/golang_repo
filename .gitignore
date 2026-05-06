@@ -9,6 +9,7 @@
 *.dylib
 *.test
 *.out
+*.pdf
 
 # Go module cache
 vendor/

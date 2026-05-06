@@ -181,35 +181,26 @@ func main() {
 
 	// ── DEFER + RECOVER RULES ─────────────────────────────────────────────────
 	fmt.Println("--- defer + recover rules ---")
-	fmt.Println(`  Rule 1: recover() must be called DIRECTLY in a defer function
-    Works:
-      defer func() { r := recover(); ... }()
-    Doesn't work:
-      defer func() { helper() }()
-      func helper() { r := recover() }  // recover sees no panic
-
-  Rule 2: recover() only intercepts panics from the same goroutine
-    A goroutine can't recover panics from child goroutines.
-    Each goroutine needs its own defer/recover.
-
-  Rule 3: Don't silently swallow panics
-    Always log: panic value + stack + request context
-    Report to error tracking (Sentry, Honeybadger, Rollbar)
-
-  Rule 4: HTTP middleware pattern
-    func RecoverMiddleware(next http.Handler) http.Handler {
-      return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        defer func() {
-          if rec := recover(); rec != nil {
-            stack := make([]byte, 64*1024)
-            n := runtime.Stack(stack, false)
-            log.Errorf("panic: %v\n%s", rec, stack[:n])
-            http.Error(w, "internal server error", 500)
-          }
-        }()
-        next.ServeHTTP(w, r)
-      })
-    }`)
+	fmt.Println("  Rule 1: recover() must be called DIRECTLY in a defer function")
+	fmt.Println("    Works:   defer func() { r := recover(); ... }()")
+	fmt.Println("    Fails:   defer func() { helper() }()  // helper()'s recover sees no panic")
+	fmt.Println()
+	fmt.Println("  Rule 2: recover() only intercepts panics from the same goroutine")
+	fmt.Println("    Each goroutine needs its own defer/recover.")
+	fmt.Println()
+	fmt.Println("  Rule 3: Don't silently swallow panics")
+	fmt.Println("    Always log: panic value + stack + request context")
+	fmt.Println("    Report to error tracking (Sentry, Honeybadger, Rollbar)")
+	fmt.Println()
+	fmt.Println("  Rule 4: HTTP middleware pattern")
+	fmt.Println("    defer func() {")
+	fmt.Println("      if rec := recover(); rec != nil {")
+	fmt.Println("        stack := make([]byte, 64*1024)")
+	fmt.Println("        n := runtime.Stack(stack, false)")
+	fmt.Println("        log.Errorf(panic: value+stack, rec, stack[:n])")
+	fmt.Println("        http.Error(w, \"internal server error\", 500)")
+	fmt.Println("      }")
+	fmt.Println("    }()")
 	fmt.Println()
 
 	// ── POSTMORTEM ────────────────────────────────────────────────────────────

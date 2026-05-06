@@ -207,8 +207,8 @@ type samplerStats struct {
 	dropped  atomic.Int64
 }
 
-func runSampler(sampler Sampler, n int) samplerStats {
-	var stats samplerStats
+func runSampler(sampler Sampler, n int) *samplerStats {
+	stats := &samplerStats{}
 	for i := 0; i < n; i++ {
 		tp := newTraceParent(rand.Float64() < 0.5)
 		if sampler.ShouldSample(tp.TraceID) {

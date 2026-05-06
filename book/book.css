@@ -1,0 +1,151 @@
+/* ── PAGE SETUP ─────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 20mm 20mm 20mm 20mm;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.7;
+  color: #111;
+}
+
+/* ── PAGE BREAKS ────────────────────────────────────────── */
+.page-break {
+  page-break-after: always;
+  break-after: page;
+}
+
+h1.part-title {
+  page-break-before: always;
+  break-before: page;
+  text-align: center;
+  font-size: 28pt;
+  margin-top: 60mm;
+  margin-bottom: 10mm;
+  color: #1a1a2e;
+  border-bottom: 3px solid #1a1a2e;
+  padding-bottom: 8mm;
+}
+
+h1.chapter-title {
+  page-break-before: always;
+  break-before: page;
+  text-align: center;
+  font-size: 22pt;
+  margin-top: 30mm;
+  margin-bottom: 8mm;
+  color: #16213e;
+}
+
+h1.cover-title {
+  text-align: center;
+  font-size: 32pt;
+  margin-top: 60mm;
+  color: #0f3460;
+  border-bottom: none;
+}
+
+p.cover-subtitle {
+  text-align: center;
+  font-size: 14pt;
+  color: #444;
+  margin-top: 8mm;
+}
+
+p.cover-meta {
+  text-align: center;
+  font-size: 11pt;
+  color: #666;
+  margin-top: 6mm;
+}
+
+/* ── HEADINGS ───────────────────────────────────────────── */
+h1 { font-size: 20pt; color: #0f3460; margin-top: 12mm; }
+h2 { font-size: 16pt; color: #16213e; margin-top: 8mm; border-bottom: 1px solid #ddd; padding-bottom: 2mm; }
+h3 { font-size: 13pt; color: #1a1a2e; margin-top: 6mm; }
+h4 { font-size: 11pt; color: #333; margin-top: 4mm; }
+
+/* ── CODE BLOCKS ────────────────────────────────────────── */
+pre {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-left: 4px solid #0f3460;
+  padding: 4mm;
+  font-size: 8.5pt;
+  line-height: 1.45;
+  overflow-x: auto;
+  page-break-inside: avoid;
+}
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  font-size: 9pt;
+  background: #f0f0f0;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 8.5pt;
+}
+
+/* ── BLOCKQUOTES (reading-time banners, callouts) ────── */
+blockquote {
+  border-left: 4px solid #0f3460;
+  background: #f0f4ff;
+  padding: 3mm 5mm;
+  margin: 4mm 0;
+  color: #222;
+  font-style: normal;
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* ── TABLES ─────────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 4mm 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: #0f3460;
+  color: white;
+  padding: 2mm 3mm;
+  text-align: left;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 2mm 3mm;
+}
+
+tr:nth-child(even) td { background: #f9f9f9; }
+
+/* ── HORIZONTAL RULES ───────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 6mm 0;
+}
+
+/* ── LISTS ──────────────────────────────────────────────── */
+ul, ol { padding-left: 6mm; margin: 2mm 0; }
+li { margin: 1mm 0; }
+
+/* ── PREVENT ORPHANS ────────────────────────────────────── */
+h2, h3, h4 {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+p { orphans: 3; widows: 3; }
